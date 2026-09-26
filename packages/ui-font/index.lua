@@ -1,0 +1,42 @@
+local env = select(2, ...)
+local React = env.modules:Import("packages\\react")
+local UIFont_Enum = env.modules:Import("packages\\ui-font\\enum")
+local UIFont_CustomFont = env.modules:Import("packages\\ui-font\\custom-font")
+local UIFont_FontUtil = env.modules:Import("packages\\ui-font\\font-util")
+local UIFont = env.modules:New("packages\\ui-font")
+
+UIFont.Enum = UIFont_Enum
+UIFont.CustomFont = UIFont_CustomFont
+UIFont.FontUtil = UIFont_FontUtil
+
+do -- Fonts
+    local UI_FONT_SCHEMATIC = {
+        8, 10, 11, 12, 13, 14, 16, 18
+    }
+
+    function UIFont.CreateUIFontObjectNormal(fontHeight)
+        local fontObject = UIFont_FontUtil:CreateFontObject()
+        fontObject:SetFont(GameFontNormal:GetFont(), fontHeight, "")
+        fontObject:SetShadowOffset(1, -1)
+        fontObject:SetShadowColor(0, 0, 0, 1)
+
+        return fontObject
+    end
+
+    -- Sizes from here up are headings and take the title weight.
+    local TITLE_HEIGHT = 14
+
+    function UIFont.SetNormalFont(fontPath, titleFontPath)
+        for _, fontHeight in ipairs(UI_FONT_SCHEMATIC) do
+            local path = (fontHeight >= TITLE_HEIGHT and titleFontPath) or fontPath
+            UIFont["UIFontObjectNormal" .. fontHeight]:SetFontFile(path)
+        end
+    end
+
+    local UIFontNormal = React.New(GameFontNormal:GetFont())
+    UIFont.UIFontNormal = UIFontNormal
+
+    for _, fontHeight in ipairs(UI_FONT_SCHEMATIC) do
+        UIFont["UIFontObjectNormal" .. fontHeight] = UIFont.CreateUIFontObjectNormal(fontHeight)
+    end
+end

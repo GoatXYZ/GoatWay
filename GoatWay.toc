@@ -1,0 +1,33 @@
+## Interface: 16001
+## Title: |cfff4bf2aGoatWay|r |cffaaaaaa(Forever)|r
+## Notes: In-world waypoints and navigation for WoW Forever, in the GoatQuest look. Follows GoatQuest's guide arrow when GoatQuest is loaded.
+## Author: Goat; based on Waypoint UI by AdaptiveX
+## Version: 1.0.0
+## IconTexture: Interface\AddOns\GoatWay\Art\Icons\Logo
+## SavedVariables: GoatWayDB_Global, GoatWayDB_Global_Persistent
+## SavedVariablesPerCharacter: GoatWayDB_Local, GoatWayDB_Local_Persistent
+## AddonCompartmentFunc: GoatWayAPI_OpenSettingsUI
+## OptionalDeps: GoatQuest, TomTom
+
+
+packages\packages.xml
+libs\libs.xml
+
+Fonts.lua
+Preload.lua
+Locales\Locales.xml
+
+Code\SharedUtil.lua
+Code\Style.lua
+Code\SharedUI.lua
+Code\UIWidgets.lua
+Code\MapPin\MapPin.xml
+Code\Waypoint\Waypoint.xml
+Code\Halo\Halo.lua
+Code\MapPinFrame\MapPinFrame.xml
+Code\Navigation\Navigation.xml
+Code\Settings\Settings.xml
+Code\SupportedAddons\SupportedAddons.xml
+Code\Map\Map.xml
+
+API.lua

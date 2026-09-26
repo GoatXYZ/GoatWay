@@ -1,0 +1,25 @@
+local env = select(2, ...)
+local UIKit = env.modules:Import("packages\\ui-kit")
+local UICCommon = env.modules:Import("packages\\uic-common")
+
+UICCommon.PromptText("GoatWaySharedPrompt")
+    :id("GoatWaySharedPrompt")
+    :frameStrata(UIKit.Enum.FrameStrata.FullscreenDialog)
+    :parent(UIParent)
+    :anchor(StaticPopup1)
+    :point(UIKit.Enum.Point.Center)
+    :_Render()
+
+GoatWaySharedPrompt = UIKit.GetElementById("GoatWaySharedPrompt")
+GoatWaySharedPrompt:Hide()
+
+UICCommon.PromptInput("GoatWaySharedInputPrompt")
+    :id("GoatWaySharedInputPrompt")
+    :frameStrata(UIKit.Enum.FrameStrata.FullscreenDialog)
+    :parent(UIParent)
+    :anchor(StaticPopup1)
+    :point(UIKit.Enum.Point.Center)
+    :_Render()
+
+GoatWaySharedInputPrompt = UIKit.GetElementById("GoatWaySharedInputPrompt")
+GoatWaySharedInputPrompt:Hide()
